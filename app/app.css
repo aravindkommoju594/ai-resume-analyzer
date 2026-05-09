@@ -63,10 +63,19 @@ form {
     @apply flex flex-row justify-between items-center p-4 border-b border-gray-200;
   }
   .resume-summary {
-    @apply flex flex-row items-center justify-center p-4 gap-4;
+    @apply flex flex-row items-center justify-center p-4 gap-4 max-sm:flex-col;
     .category {
       @apply flex flex-row gap-2 items-center bg-gray-50 rounded-2xl p-4 w-full justify-between;
     }
+  }
+  .resume-review-layout {
+    @apply grid grid-cols-[minmax(360px,0.9fr)_minmax(420px,1.1fr)] gap-8 w-full max-w-[1500px] items-start max-lg:grid-cols-1;
+  }
+  .resume-preview-panel {
+    @apply w-full lg:sticky lg:top-8;
+  }
+  .resume-review-panel {
+    @apply flex flex-col gap-6 w-full min-w-0;
   }
   .back-button {
     @apply flex flex-row items-center gap-2 border border-gray-200 rounded-lg p-2 shadow-sm;
@@ -94,6 +103,12 @@ form {
 
   .feedback-section {
     @apply flex flex-col gap-8 w-1/2 px-8 max-lg:w-full py-6;
+  }
+  .feedback-grid {
+    @apply grid grid-cols-1 gap-6 w-full;
+  }
+  .feedback-card {
+    @apply flex flex-col gap-5 bg-white rounded-2xl p-6 shadow-sm border border-gray-100;
   }
 
   .navbar {
@@ -148,5 +163,34 @@ form {
   }
   to {
     opacity: 1;
+  }
+}
+
+@media print {
+  main {
+    background: white !important;
+    padding-top: 0;
+  }
+
+  .navbar,
+  .primary-button,
+  .gradient-border {
+    display: none !important;
+  }
+
+  .main-section {
+    margin: 0;
+    padding: 0;
+    gap: 24px;
+  }
+
+  .feedback-grid {
+    display: block;
+  }
+
+  .feedback-card {
+    break-inside: avoid;
+    box-shadow: none;
+    margin-bottom: 16px;
   }
 }
